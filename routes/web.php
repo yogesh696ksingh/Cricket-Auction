@@ -12,3 +12,5 @@
 */
 
 Route::get('/',['as'=> 'auction.main', 'uses' => 'AdminController@index']); 
+Route::post('/increment','AdminController@increment');
+Route::get('/players','AdminController@players');
