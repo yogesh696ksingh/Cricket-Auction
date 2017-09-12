@@ -11,4 +11,18 @@
 |
 */
 
-Route::get('/',['as'=> 'auction.main', 'uses' => 'AdminController@index']); 
+Route::get('/',['as'=> 'auction.login', 'uses' => 'AdminController@index']); 
+Route::get('/welcome',['as'=>'auction.welcome','uses' => 'AdminController@welcome']);
+Route::get('/increment','AdminController@increment');
+Route::get('/players','AdminController@players');
+Route::get('/sold','AdminController@sold');
+Route::get('/unsold','AdminController@unsold');
+Route::post('/login','AdminController@login');
+Route::get('/logout','AdminController@logout');
+Route::get('/reset','AdminController@reset');
+Route::get('/remove','AdminController@remove');
+Route::get('/submit','AdminController@submit');
+Route::get('/stdt','AdminController@stdt');
+
+Route::get('/index','GlobalController@index');
+Route::get('/team','GlobalController@team');
