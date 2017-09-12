@@ -67,30 +67,68 @@
     <body> --}}
     @extends('layouts.master')
     @section('content')
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+        <div class="col-sm-12 ongoing">
+            <div class="col-sm-2 thumbnail">
+                Purse Balance: 100000000
+            </div>
+            <div class="col-sm-3">
+                <img src="img/Yogesh.jpg" style="max-width: 160px; max-height: 180px" >
+            </div>
+            <div class="col-sm-6">
+                <table class="table">
+                    <tr>
+                        <td>Player Name</td>
+                    </tr>
+                    <tr>
+                        <td>Year Branch Division</td>
+                    </tr>
+                    <tr>
+                        <td>Player info batting</td>
+                    </tr>
+                    <tr>
+                        <td>Player info bowling</td>
+                    </tr>
+                    <tr>
+                        <td>Achievements</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="list">
+            <div class="col-sm-6">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        <th>Base Price</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                    </tr>
+                    @foreach($players as $player)
+                    <tr>
+                        <td>{{ $player->name }}</td>
+                        <td>{{ $player->base_price }}</td>
+                        <td>{{ $player->player_type }}</td>
+                        <td><button type="button" class="btn btn-primary">Sold</button>&emsp;<button type="button" class="btn btn-primary">Unsold</button></td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+            <div class="col-sm-1">
+                
+            </div>
+            <div class="col-sm-5">
+                <table class="table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>All-Rounder</td>
+                        <td>Yogesh Singh</td>
+                        <td>5000000</td>
+                    </tr>
+                </table>
             </div>
         </div>
     @stop
