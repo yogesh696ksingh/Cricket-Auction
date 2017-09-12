@@ -7,8 +7,16 @@
             <div class="col-sm-2">
                 <div class="thumbnail">Welcome {!! Session::get('man_name') !!}</div>
                 <div class="thumbnail">Purse Balance: {{ $manager[0]->budget }}</div>
-                <div></div>
-                <div><a href="/logout" class="btn btn-danger">Logout</a></div>
+                <div>
+                    @if(isset($status))
+                        <h6>{{ $status }}</h6>
+                    @endif
+                </div>
+                <div>
+                    <a href="/reset" class="btn btn-danger btn-block">Reset</a>
+                </div>
+                <div>&nbsp;</div>
+                <div><a href="/logout" class="btn btn-danger btn-block">Logout</a></div>
             </div>
             <div class="col-sm-3">
                 <!-- <img src="$current->image" style="max-width: 160px; max-height: 180px" > -->
@@ -42,17 +50,37 @@
             <div class="col-sm-6">
                 <table class="table table-bordered">
                     <tr>
+                <!--         <th>ID check</th> -->
                         <th>Name</th>
-                        <th>Base Price</th>
+                        <th>Price</th>
                         <th>Type</th>
                         <th>Status</th>
                     </tr>
                     @foreach($players as $player)
                     <tr>
+                        <!-- <td>{{ $player->id }}</td> -->
                         <td>{{ $player->name }}</td>
-                        <td>{{ $player->base_price }}&nbsp;<a href="/increment" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a></td>
+                        @if($current->id == $player->id)
+                        <td>{{ $player->sell_price }}&nbsp;<a href="/increment?id=<?=$player->id?>" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></a></td>
+                        @else
+                        <td>{{ $player->sell_price }}&nbsp;<a href="/increment?id=<?=$player->id?>" class="btn btn-info disabled"><span class="glyphicon glyphicon-plus"></span></a></td>
+                        @endif
                         <td>{{ $player->player_type }}</td>
-                        <td><a href="/sold?id=<?=$player->id?>" type="button" class="btn btn-success">Sold</a>&emsp;<a href="/unsold" type="button" class="btn btn-warning">Unsold</a></td>
+                        @if($current->id == $player->id)
+                            <td>
+                                <a href="/sold?id=<?=$player->id?>" type="button" class="btn btn-success">Sold</a>&emsp;
+                                @if($player->base_price == $player->sell_price)
+                                    <a href="/unsold?id=<?=$player->id?>" type="button" class="btn btn-warning">Unsold</a>
+                                @else
+                                    <a href="/unsold?id=<?=$player->id?>" type="button" class="btn btn-warning disabled">Unsold</a>
+                                @endif
+                                &emsp;<a href="/stdt?id=<?=$player->id?>" type="button" class="btn btn-default"><span class="glyphicon glyphicon-paste"></span></a>
+                            </td>
+                        @else
+                            <td>
+                                <a href="/sold?id=<?=$player->id?>" type="button" class="btn btn-success disabled">Sold</a>&emsp;<a href="/unsold" type="button" class="btn btn-warning disabled">Unsold</a>&emsp;<a href="/stdt?id=<?=$player->id?>" type="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-paste"></span></a>
+                            </td>
+                        @endif
                     </tr>
                     @endforeach
                 </table>
@@ -84,10 +112,11 @@
         </div>
         <hr>
         <div class="col-sm-8 col-sm-push-2">
-            <a href="/reset" class="btn btn-danger btn-block">Reset</a>
+            <a href="/submit" type="button" class="btn btn-success btn-block">Submit</a>
+        </div>
+        <div class="col-sm-12">
+            &nbsp;
         </div>
         <hr>
-        <div class="col-sm-12 ">
-            <div>&nbsp;</div>
-        </div>
+        
 @stop
