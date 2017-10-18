@@ -9,16 +9,18 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
 <!-- <script src="js/vendor/modernizr.js"></script> -->
-<link rel="stylesheet" href="../library/foundation/css/foundation.min.css">
-<link rel="stylesheet" type="text/css" href="css/custom.css">
-<script src="{!! asset('js/jquery.min.js') !!}">jQuery.noConflict();</script>
+{{-- <link rel="stylesheet" href="../library/foundation/css/foundation.min.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css"> --}}
+
+
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
 
 <script src="{!! asset('js/bootstrap.js') !!}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-<script src="{!! asset('js/modernizr-2.6.2.min.js') !!}"></script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-<script src="{!! asset('js/jquery-1.9.0.min.js') !!}"></script>
